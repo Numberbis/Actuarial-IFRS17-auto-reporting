@@ -51,18 +51,19 @@ jobs:
       - name: Install Pandoc and LaTeX
         run: |
           sudo apt-get update
-          sudo apt-get install -y pandoc texlive-latex-base texlive-fonts-recommended texlive-latex-extra
+          sudo apt-get install -y pandoc texlive-xetex texlive-fonts-recommended texlive-latex-extra fonts-noto-color-emoji
 
       - name: Convert Markdown to PDF
         run: |
           pandoc reports/ifrs17_report.md \
             -o reports/ifrs17_report.pdf \
-            --pdf-engine=pdflatex \
+            --pdf-engine=xelatex \
             -V geometry:margin=1in \
             -V colorlinks=true \
             -V linkcolor=blue \
             -V urlcolor=blue \
-            -V toccolor=gray
+            -V toccolor=gray \
+            -V mainfont="DejaVu Sans"
 
       - name: Upload reports as artifacts
         uses: actions/upload-artifact@v4
