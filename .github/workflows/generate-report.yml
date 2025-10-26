@@ -1,0 +1,66 @@
+name: Generate IFRS 17 Report
+
+on:
+  push:
+  pull_request:
+  schedule:
+    # Run monthly on the 1st at 00:00 UTC
+    - cron: '0 0 1 * *'
+  workflow_dispatch:
+    inputs:
+      reporting_date:
+        description: 'Reporting date (YYYY-MM-DD)'
+        required: false
+        default: ''
+      company_name:
+        description: 'Company name'
+        required: false
+        default: 'Insurance Company'
+
+jobs:
+  generate-report:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -e .
+
+      - name: Generate IFRS 17 Report
+        run: |
+          REPORTING_DATE="${{ github.event.inputs.reporting_date }}"
+          COMPANY_NAME="${{ github.event.inputs.company_name }}"
+
+          if [ -z "$REPORTING_DATE" ]; then
+            python -m ifrs17.main --company-name "${COMPANY_NAME:-Insurance Company}"
+          else
+            python -m ifrs17.main --reporting-date "$REPORTING_DATE" --company-name "${COMPANY_NAME:-Insurance Company}"
+          fi
+
+      - name: Upload report as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: ifrs17-report
+          path: reports/ifrs17_report.md
+          retention-days: 90
+
+      - name: Commit and push report
+        if: github.event_name != 'pull_request'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add reports/ifrs17_report.md
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-generate IFRS 17 report [skip ci]" && git push)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

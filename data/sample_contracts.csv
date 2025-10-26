@@ -1,0 +1,6 @@
+contract_id,inception_date,measurement_model,initial_premium,coverage_period_years,discount_rate,risk_adjustment,expected_claims,acquisition_costs
+CON-2024-001,2024-01-01,BBA,100000,5,0.05,5000,80000,3000
+CON-2024-002,2024-03-15,BBA,250000,10,0.045,12000,200000,7500
+CON-2024-003,2024-06-01,BBA,50000,3,0.055,2500,38000,1500
+CON-2024-004,2024-07-20,BBA,180000,7,0.048,8500,145000,5400
+CON-2024-005,2024-09-10,BBA,320000,8,0.052,15000,260000,9600
