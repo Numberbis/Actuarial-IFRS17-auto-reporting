@@ -48,9 +48,27 @@ jobs:
             python -m ifrs17.main --reporting-date "$REPORTING_DATE" --company-name "${COMPANY_NAME:-Insurance Company}"
           fi
 
-      - name: Upload report as artifact
+      - name: Install Pandoc and LaTeX
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc texlive-latex-base texlive-fonts-recommended texlive-latex-extra
+
+      - name: Convert Markdown to PDF
+        run: |
+          pandoc reports/ifrs17_report.md \
+            -o reports/ifrs17_report.pdf \
+            --pdf-engine=pdflatex \
+            -V geometry:margin=1in \
+            -V colorlinks=true \
+            -V linkcolor=blue \
+            -V urlcolor=blue \
+            -V toccolor=gray
+
+      - name: Upload reports as artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: ifrs17-report
-          path: reports/ifrs17_report.md
+          name: ifrs17-reports
+          path: |
+            reports/ifrs17_report.md
+            reports/ifrs17_report.pdf
           retention-days: 90
