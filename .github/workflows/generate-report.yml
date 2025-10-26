@@ -54,13 +54,3 @@ jobs:
           name: ifrs17-report
           path: reports/ifrs17_report.md
           retention-days: 90
-
-      - name: Commit and push report
-        if: github.event_name != 'pull_request'
-        run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git add reports/ifrs17_report.md
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-generate IFRS 17 report [skip ci]" && git push)
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
