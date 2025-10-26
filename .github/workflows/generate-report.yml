@@ -48,22 +48,15 @@ jobs:
             python -m ifrs17.main --reporting-date "$REPORTING_DATE" --company-name "${COMPANY_NAME:-Insurance Company}"
           fi
 
-      - name: Install Pandoc and LaTeX
+      - name: Install WeasyPrint dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y pandoc texlive-xetex texlive-fonts-recommended texlive-latex-extra fonts-noto-color-emoji
+          sudo apt-get install -y fonts-noto-color-emoji libpango-1.0-0 libpangoft2-1.0-0
+          pip install weasyprint
 
-      - name: Convert Markdown to PDF
+      - name: Generate HTML and PDF reports
         run: |
-          pandoc reports/ifrs17_report.md \
-            -o reports/ifrs17_report.pdf \
-            --pdf-engine=xelatex \
-            -V geometry:margin=1in \
-            -V colorlinks=true \
-            -V linkcolor=blue \
-            -V urlcolor=blue \
-            -V toccolor=gray \
-            -V mainfont="DejaVu Sans"
+          python scripts/generate_pdf.py
 
       - name: Upload reports as artifacts
         uses: actions/upload-artifact@v4
@@ -71,5 +64,6 @@ jobs:
           name: ifrs17-reports
           path: |
             reports/ifrs17_report.md
+            reports/ifrs17_report.html
             reports/ifrs17_report.pdf
           retention-days: 90
