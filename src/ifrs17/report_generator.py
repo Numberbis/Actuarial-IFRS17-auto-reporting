@@ -82,62 +82,55 @@ class MarkdownReportGenerator:
         md.append(f"| Contractual Service Margin | {self._format_amount(total_csm)} |\n")
         md.append(f"| **Total Liability** | **{self._format_amount(total_liability)}** |\n")
 
-        # Contract Details
-        md.append("\n" + "="*80 + "\n")
+        # Contract Details - Summary Table
         md.append("\n## Contract-Level Details\n")
-
+        md.append("\n### Balance Sheet Summary by Contract\n\n")
+        md.append("| Contract ID | Model | FCF | Risk Adj. | CSM | Total Liability |\n")
+        md.append("|-------------|-------|-----|-----------|-----|----------------|\n")
         for result in results:
-            md.append(f"\n### Contract {result.contract_id}\n")
-            md.append(f"**Measurement Model:** `{result.measurement_model}`\n\n")
+            md.append(f"| {result.contract_id} | {result.measurement_model} | ")
+            md.append(f"{self._format_amount(result.fulfilment_cash_flows)} | ")
+            md.append(f"{self._format_amount(result.risk_adjustment)} | ")
+            md.append(f"{self._format_amount(result.csm.closing_balance)} | ")
+            md.append(f"**{self._format_amount(result.insurance_contract_liability)}** |\n")
 
-            # Balance Sheet Components
-            md.append("#### Balance Sheet Components\n\n")
-            md.append("| Component | Amount |\n")
-            md.append("|-----------|--------|\n")
-            md.append(f"| Fulfilment Cash Flows | {self._format_amount(result.fulfilment_cash_flows)} |\n")
-            md.append(f"| Risk Adjustment | {self._format_amount(result.risk_adjustment)} |\n")
-            md.append(f"| CSM | {self._format_amount(result.csm.closing_balance)} |\n")
-            md.append(f"| **Insurance Contract Liability** | **{self._format_amount(result.insurance_contract_liability)}** |\n")
-
-            # CSM Movement
-            md.append(f"\n#### CSM Movement Analysis\n\n")
-            md.append("| Movement | Amount |\n")
-            md.append("|----------|--------|\n")
-            md.append(f"| Opening Balance | {self._format_amount(result.csm.opening_balance)} |\n")
-            md.append(f"| Interest Accretion | {self._format_amount(result.csm.interest_accretion)} |\n")
-            md.append(f"| Changes in Estimates | {self._format_amount(result.csm.changes_in_estimates)} |\n")
-            md.append(f"| Release for Service | {self._format_amount(-result.csm.release_for_service)} |\n")
-            md.append(f"| **Closing Balance** | **{self._format_amount(result.csm.closing_balance)}** |\n")
-
-            # P&L Impact
+        # P&L Summary by Contract
+        md.append("\n### Income Statement Summary by Contract\n\n")
+        md.append("| Contract ID | Revenue | Expense | Net Result | Status |\n")
+        md.append("|-------------|---------|---------|------------|--------|\n")
+        for result in results:
             contract_net = result.insurance_revenue - result.insurance_service_expense
-            contract_emoji = "✅" if contract_net >= 0 else "⚠️"
+            status = "✅" if contract_net >= 0 else "⚠️"
+            md.append(f"| {result.contract_id} | ")
+            md.append(f"{self._format_amount(result.insurance_revenue)} | ")
+            md.append(f"{self._format_amount(-result.insurance_service_expense)} | ")
+            md.append(f"**{self._format_amount(contract_net)}** | {status} |\n")
 
-            md.append(f"\n#### P&L Impact\n\n")
-            md.append("| Item | Amount |\n")
-            md.append("|------|--------|\n")
-            md.append(f"| Insurance Revenue | {self._format_amount(result.insurance_revenue)} |\n")
-            md.append(f"| Insurance Service Expense | {self._format_amount(-result.insurance_service_expense)} |\n")
-            md.append(f"| **{contract_emoji} Net Insurance Result** | **{self._format_amount(contract_net)}** |\n")
-            md.append("\n" + "-"*80 + "\n")
+        # CSM Movement Summary
+        md.append("\n### CSM Movement Summary by Contract\n\n")
+        md.append("| Contract ID | Opening | Interest | Changes | Release | Closing |\n")
+        md.append("|-------------|---------|----------|---------|---------|--------|\n")
+        for result in results:
+            md.append(f"| {result.contract_id} | ")
+            md.append(f"{self._format_amount(result.csm.opening_balance)} | ")
+            md.append(f"{self._format_amount(result.csm.interest_accretion)} | ")
+            md.append(f"{self._format_amount(result.csm.changes_in_estimates)} | ")
+            md.append(f"{self._format_amount(-result.csm.release_for_service)} | ")
+            md.append(f"**{self._format_amount(result.csm.closing_balance)}** |\n")
 
-        # Methodology
-        md.append("\n" + "="*80 + "\n")
-        md.append("\n## Methodology\n\n")
-        md.append("This report applies the **Building Block Approach (BBA)** under IFRS 17.\n\n")
+        # Methodology - Compact version
+        md.append("\n## Methodology Notes\n\n")
+        md.append("This report applies the **Building Block Approach (BBA)** under IFRS 17. ")
+        md.append("Coverage units are allocated on a straight-line basis, ")
+        md.append("CSM is released in proportion to coverage units provided, ")
+        md.append("and interest accretion uses contract discount rates.\n\n")
 
-        md.append("### Key Assumptions\n\n")
-        md.append("- Coverage units are allocated on a straight-line basis over the coverage period\n")
-        md.append("- CSM is released in proportion to coverage units provided\n")
-        md.append("- Interest accretion is calculated using contract discount rates\n")
-        md.append("- Risk adjustment is released over the coverage period\n\n")
-
-        md.append("### Components Explained\n\n")
-        md.append("| Component | Description |\n")
-        md.append("|-----------|-------------|\n")
-        md.append("| **Fulfilment Cash Flows (FCF)** | Present value of expected cash flows |\n")
-        md.append("| **Risk Adjustment (RA)** | Compensation required for bearing uncertainty |\n")
-        md.append("| **Contractual Service Margin (CSM)** | Unearned profit recognized over coverage period |\n")
+        md.append("### Component Definitions\n\n")
+        md.append("| Component | Definition |\n")
+        md.append("|-----------|------------|\n")
+        md.append("| **FCF** | Fulfilment Cash Flows - Present value of expected cash flows |\n")
+        md.append("| **Risk Adj.** | Risk Adjustment - Compensation for bearing uncertainty |\n")
+        md.append("| **CSM** | Contractual Service Margin - Unearned profit over coverage period |\n")
 
         # Footer
         md.append("\n" + "="*80 + "\n")

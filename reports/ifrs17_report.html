@@ -9,132 +9,158 @@
 
 @page {
     size: A4;
-    margin: 2cm 2cm 2.5cm 2cm;
+    margin: 1.5cm 1.5cm 2cm 1.5cm;
 
     @bottom-center {
         content: counter(page) " / " counter(pages);
-        font-size: 9pt;
-        color: #666;
+        font-size: 7pt;
+        color: #718096;
     }
 }
 
 /* Base typography */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 11pt;
-    line-height: 1.6;
-    color: #333;
+    font-size: 9pt;
+    line-height: 1.4;
+    color: #2c3e50;
     max-width: 100%;
+}
+
+/* Paragraph spacing */
+p {
+    margin: 6pt 0;
 }
 
 /* Header styling */
 h1 {
-    color: #1e3a8a;
-    font-size: 28pt;
-    font-weight: bold;
+    color: #1a202c;
+    font-size: 18pt;
+    font-weight: 700;
     margin-top: 0;
-    margin-bottom: 10pt;
-    padding-bottom: 10pt;
-    border-bottom: 4px solid #3b82f6;
+    margin-bottom: 8pt;
+    padding-bottom: 6pt;
+    border-bottom: 2px solid #2c3e50;
     page-break-after: avoid;
 }
 
 h2 {
-    color: #1e40af;
-    font-size: 20pt;
-    font-weight: bold;
-    margin-top: 25pt;
-    margin-bottom: 12pt;
-    padding-top: 10pt;
-    border-top: 2px solid #e5e7eb;
+    color: #2c3e50;
+    font-size: 13pt;
+    font-weight: 700;
+    margin-top: 16pt;
+    margin-bottom: 8pt;
+    padding-top: 6pt;
+    padding-bottom: 3pt;
+    border-bottom: 1px solid #cbd5e0;
     page-break-after: avoid;
 }
 
 h3 {
-    color: #1e40af;
-    font-size: 16pt;
+    color: #2d3748;
+    font-size: 11pt;
     font-weight: 600;
-    margin-top: 18pt;
-    margin-bottom: 10pt;
+    margin-top: 12pt;
+    margin-bottom: 6pt;
     page-break-after: avoid;
 }
 
 h4 {
-    color: #374151;
-    font-size: 13pt;
+    color: #4a5568;
+    font-size: 10pt;
     font-weight: 600;
-    margin-top: 14pt;
-    margin-bottom: 8pt;
+    margin-top: 10pt;
+    margin-bottom: 5pt;
     page-break-after: avoid;
 }
 
 /* Company info box */
 h2:first-of-type {
-    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
-    color: white;
-    padding: 15pt;
-    border-radius: 8pt;
-    border: none;
-    margin-top: 15pt;
+    background: #f7fafc;
+    color: #2c3e50;
+    padding: 8pt 12pt;
+    border: 1px solid #cbd5e0;
+    border-left: 4px solid #2c3e50;
+    border-radius: 0;
+    margin-top: 8pt;
 }
 
 /* Date styling */
 p:has(> strong:first-child) {
-    color: #6b7280;
-    font-size: 10pt;
-    margin-top: 5pt;
+    color: #718096;
+    font-size: 8pt;
+    margin-top: 3pt;
 }
 
 /* Horizontal rules */
 hr {
     border: none;
-    border-top: 1px solid #d1d5db;
-    margin: 20pt 0;
+    border-top: 1px solid #e2e8f0;
+    margin: 12pt 0;
 }
 
 /* Separator lines */
 p:has(> em:only-child) {
     text-align: center;
-    color: #9ca3af;
-    border-top: 2px solid #e5e7eb;
-    border-bottom: 2px solid #e5e7eb;
-    padding: 8pt 0;
-    margin: 25pt 0;
+    color: #a0aec0;
+    border-top: 1px solid #e2e8f0;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 4pt 0;
+    margin: 12pt 0;
 }
 
 /* Tables */
 table {
     width: 100%;
     border-collapse: collapse;
-    margin: 15pt 0 25pt 0;
-    font-size: 10pt;
+    margin: 8pt 0 12pt 0;
+    font-size: 8pt;
     page-break-inside: avoid;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    border-radius: 8pt;
-    overflow: hidden;
+    border: 1px solid #cbd5e0;
+}
+
+/* Wide tables with many columns */
+table:has(th:nth-child(5)) {
+    font-size: 7.5pt;
+}
+
+table:has(th:nth-child(6)) {
+    font-size: 7pt;
 }
 
 thead {
-    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+    background: #2c3e50;
     color: white;
     font-weight: 600;
 }
 
 th {
-    padding: 12pt 10pt;
+    padding: 5pt 6pt;
     text-align: left;
     font-weight: 600;
-    border-bottom: 2px solid #1e40af;
+    border-bottom: 1px solid #2c3e50;
+    font-size: 8pt;
 }
 
 td {
-    padding: 10pt;
-    border-bottom: 1px solid #e5e7eb;
+    padding: 4pt 6pt;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+/* Compact wide tables */
+table:has(th:nth-child(5)) th,
+table:has(th:nth-child(5)) td {
+    padding: 4pt 5pt;
+}
+
+table:has(th:nth-child(6)) th,
+table:has(th:nth-child(6)) td {
+    padding: 3pt 4pt;
 }
 
 /* Alternating row colors */
 tbody tr:nth-child(even) {
-    background-color: #f9fafb;
+    background-color: #f7fafc;
 }
 
 tbody tr:nth-child(odd) {
@@ -142,20 +168,20 @@ tbody tr:nth-child(odd) {
 }
 
 tbody tr:hover {
-    background-color: #eff6ff;
+    background-color: #edf2f7;
 }
 
 /* Bold rows in tables (totals, etc.) */
 tr:has(td strong) {
-    background-color: #dbeafe !important;
-    font-weight: bold;
-    border-top: 2px solid #3b82f6;
+    background-color: #edf2f7 !important;
+    font-weight: 600;
+    border-top: 1px solid #a0aec0;
 }
 
 tr:has(td strong) td {
-    padding: 12pt 10pt;
+    padding: 6pt 8pt;
     font-weight: 600;
-    color: #1e40af;
+    color: #2c3e50;
 }
 
 /* Right-align numeric columns */
@@ -163,79 +189,78 @@ td:last-child, th:last-child {
     text-align: right;
     font-variant-numeric: tabular-nums;
     font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
-    font-size: 10.5pt;
-    letter-spacing: 0.3pt;
+    font-size: 8.5pt;
+    letter-spacing: 0.2pt;
 }
 
 /* Negative amount styling */
 .negative {
-    color: #dc2626;
+    color: #c53030;
     font-weight: 600;
 }
 
 /* Amount highlighting */
 td:last-child strong, th:last-child strong {
-    font-size: 11pt;
+    font-size: 9pt;
     font-weight: 700;
 }
 
 /* Lists */
 ul {
-    margin: 10pt 0;
-    padding-left: 25pt;
+    margin: 6pt 0;
+    padding-left: 18pt;
 }
 
 li {
-    margin: 5pt 0;
-    line-height: 1.5;
+    margin: 3pt 0;
+    line-height: 1.4;
+    font-size: 8.5pt;
 }
 
 /* Code and inline elements */
 code {
-    background-color: #f3f4f6;
-    padding: 2pt 6pt;
-    border-radius: 3pt;
+    background-color: #edf2f7;
+    padding: 1pt 4pt;
+    border-radius: 2pt;
     font-family: 'Courier New', monospace;
-    font-size: 9pt;
-    color: #1f2937;
+    font-size: 8pt;
+    color: #2d3748;
 }
 
 strong {
     font-weight: 600;
-    color: #1f2937;
+    color: #2c3e50;
 }
 
 /* Key metrics section */
 h3:contains("Key Metrics") + table {
-    background: linear-gradient(to bottom, #eff6ff 0%, #ffffff 100%);
-    border: 3px solid #3b82f6;
-    border-radius: 12pt;
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+    background: #f7fafc;
+    border: 2px solid #4a5568;
 }
 
 h3:contains("Key Metrics") + table td:last-child {
-    font-size: 11.5pt;
+    font-size: 9pt;
     font-weight: 700;
-    color: #1e40af;
+    color: #2c3e50;
 }
 
 /* Contract sections */
 h3:contains("Contract") {
-    background-color: #f3f4f6;
-    padding: 10pt 15pt;
-    border-left: 5px solid #3b82f6;
-    border-radius: 4pt;
-    margin-top: 25pt;
+    background-color: #f7fafc;
+    padding: 5pt 10pt;
+    border-left: 3px solid #4a5568;
+    border-radius: 0;
+    margin-top: 12pt;
 }
 
 /* Warning/negative indicators */
 tr:has(td:contains("⚠️")) {
-    background-color: #fef3c7 !important;
+    background-color: #fff5f5 !important;
 }
 
 /* Success indicators */
 tr:has(td:contains("✅")) {
-    background-color: #d1fae5 !important;
+    background-color: #f0fff4 !important;
 }
 
 /* Footer section */
@@ -243,10 +268,10 @@ body > p:last-of-type,
 body > p:nth-last-of-type(2),
 body > p:nth-last-of-type(3) {
     text-align: center;
-    font-size: 9pt;
-    color: #6b7280;
+    font-size: 7.5pt;
+    color: #718096;
     font-style: italic;
-    margin-top: 5pt;
+    margin-top: 3pt;
 }
 
 /* Page breaks */
@@ -270,19 +295,19 @@ table {
 
 /* Executive Summary Box */
 h2:contains("Executive Summary") + p {
-    background-color: #f0f9ff;
-    padding: 15pt;
-    border-left: 5px solid #0ea5e9;
-    border-radius: 4pt;
-    margin: 15pt 0;
+    background-color: #f7fafc;
+    padding: 8pt;
+    border-left: 3px solid #4a5568;
+    border-radius: 0;
+    margin: 8pt 0;
 }
 
 /* Methodology section */
 h2:contains("Methodology") {
-    background-color: #f9fafb;
-    padding: 15pt;
-    border-radius: 8pt;
-    border-left: 5px solid #6b7280;
+    background-color: transparent;
+    padding: 0;
+    border-radius: 0;
+    border-left: none;
 }
 
 /* Emoji support - ensure good rendering */
@@ -371,474 +396,190 @@ body {
 </tbody>
 </table>
 
-<hr>
-
 <h2>Contract-Level Details</h2>
 
-<h3>Contract CON-2024-001</h3>
-<p><strong>Measurement Model:</strong> <code>BBA</code></p>
-
-<h4>Balance Sheet Components</h4>
+<h3>Balance Sheet Summary by Contract</h3>
 
 <table>
 <thead><tr>
-<th>Component</th>
-<th>Amount</th>
+<th>Contract ID</th>
+<th>Model</th>
+<th>FCF</th>
+<th>Risk Adj.</th>
+<th>CSM</th>
+<th>Total Liability</th>
 </tr></thead>
 <tbody>
 <tr>
-<td>Fulfilment Cash Flows</td>
+<td>CON-2024-001</td>
+<td>BBA</td>
 <td>$249,358.13</td>
-</tr>
-<tr>
-<td>Risk Adjustment</td>
 <td>$0.00</td>
-</tr>
-<tr>
-<td>CSM</td>
 <td>$0.00</td>
-</tr>
-<tr>
-<td><strong>Insurance Contract Liability</strong></td>
 <td><strong>$249,358.13</strong></td>
 </tr>
-</tbody>
-</table>
-
-<h4>CSM Movement Analysis</h4>
-
-<table>
-<thead><tr>
-<th>Movement</th>
-<th>Amount</th>
-</tr></thead>
-<tbody>
 <tr>
-<td>Opening Balance</td>
-<td>$0.00</td>
-</tr>
-<tr>
-<td>Interest Accretion</td>
-<td>$0.00</td>
-</tr>
-<tr>
-<td>Changes in Estimates</td>
-<td>$0.00</td>
-</tr>
-<tr>
-<td>Release for Service</td>
-<td>$-0.00</td>
-</tr>
-<tr>
-<td><strong>Closing Balance</strong></td>
-<td><strong>$0.00</strong></td>
-</tr>
-</tbody>
-</table>
-
-<h4>P&L Impact</h4>
-
-<table>
-<thead><tr>
-<th>Item</th>
-<th>Amount</th>
-</tr></thead>
-<tbody>
-<tr>
-<td>Insurance Revenue</td>
-<td>$5,000.00</td>
-</tr>
-<tr>
-<td>Insurance Service Expense</td>
-<td><span class="negative">$(16,000.00)</span></td>
-</tr>
-<tr>
-<td><strong>⚠️ Net Insurance Result</strong></td>
-<td><strong><span class="negative">$(11,000.00)</span></strong></td>
-</tr>
-</tbody>
-</table>
-
-<p>--------------------------------------------------------------------------------</p>
-
-<h3>Contract CON-2024-002</h3>
-<p><strong>Measurement Model:</strong> <code>BBA</code></p>
-
-<h4>Balance Sheet Components</h4>
-
-<table>
-<thead><tr>
-<th>Component</th>
-<th>Amount</th>
-</tr></thead>
-<tbody>
-<tr>
-<td>Fulfilment Cash Flows</td>
+<td>CON-2024-002</td>
+<td>BBA</td>
 <td>$1,340,043.64</td>
-</tr>
-<tr>
-<td>Risk Adjustment</td>
 <td>$0.00</td>
-</tr>
-<tr>
-<td>CSM</td>
 <td>$0.00</td>
-</tr>
-<tr>
-<td><strong>Insurance Contract Liability</strong></td>
 <td><strong>$1,340,043.64</strong></td>
 </tr>
-</tbody>
-</table>
-
-<h4>CSM Movement Analysis</h4>
-
-<table>
-<thead><tr>
-<th>Movement</th>
-<th>Amount</th>
-</tr></thead>
-<tbody>
 <tr>
-<td>Opening Balance</td>
-<td>$0.00</td>
-</tr>
-<tr>
-<td>Interest Accretion</td>
-<td>$0.00</td>
-</tr>
-<tr>
-<td>Changes in Estimates</td>
-<td>$0.00</td>
-</tr>
-<tr>
-<td>Release for Service</td>
-<td>$-0.00</td>
-</tr>
-<tr>
-<td><strong>Closing Balance</strong></td>
-<td><strong>$0.00</strong></td>
-</tr>
-</tbody>
-</table>
-
-<h4>P&L Impact</h4>
-
-<table>
-<thead><tr>
-<th>Item</th>
-<th>Amount</th>
-</tr></thead>
-<tbody>
-<tr>
-<td>Insurance Revenue</td>
-<td>$12,000.00</td>
-</tr>
-<tr>
-<td>Insurance Service Expense</td>
-<td><span class="negative">$(20,000.00)</span></td>
-</tr>
-<tr>
-<td><strong>⚠️ Net Insurance Result</strong></td>
-<td><strong><span class="negative">$(8,000.00)</span></strong></td>
-</tr>
-</tbody>
-</table>
-
-<p>--------------------------------------------------------------------------------</p>
-
-<h3>Contract CON-2024-003</h3>
-<p><strong>Measurement Model:</strong> <code>BBA</code></p>
-
-<h4>Balance Sheet Components</h4>
-
-<table>
-<thead><tr>
-<th>Component</th>
-<th>Amount</th>
-</tr></thead>
-<tbody>
-<tr>
-<td>Fulfilment Cash Flows</td>
+<td>CON-2024-003</td>
+<td>BBA</td>
 <td>$54,021.47</td>
-</tr>
-<tr>
-<td>Risk Adjustment</td>
 <td>$0.00</td>
-</tr>
-<tr>
-<td>CSM</td>
 <td>$0.00</td>
-</tr>
-<tr>
-<td><strong>Insurance Contract Liability</strong></td>
 <td><strong>$54,021.47</strong></td>
 </tr>
-</tbody>
-</table>
-
-<h4>CSM Movement Analysis</h4>
-
-<table>
-<thead><tr>
-<th>Movement</th>
-<th>Amount</th>
-</tr></thead>
-<tbody>
 <tr>
-<td>Opening Balance</td>
-<td>$0.00</td>
-</tr>
-<tr>
-<td>Interest Accretion</td>
-<td>$0.00</td>
-</tr>
-<tr>
-<td>Changes in Estimates</td>
-<td>$0.00</td>
-</tr>
-<tr>
-<td>Release for Service</td>
-<td>$-0.00</td>
-</tr>
-<tr>
-<td><strong>Closing Balance</strong></td>
-<td><strong>$0.00</strong></td>
-</tr>
-</tbody>
-</table>
-
-<h4>P&L Impact</h4>
-
-<table>
-<thead><tr>
-<th>Item</th>
-<th>Amount</th>
-</tr></thead>
-<tbody>
-<tr>
-<td>Insurance Revenue</td>
-<td>$2,500.00</td>
-</tr>
-<tr>
-<td>Insurance Service Expense</td>
-<td><span class="negative">$(12,666.67)</span></td>
-</tr>
-<tr>
-<td><strong>⚠️ Net Insurance Result</strong></td>
-<td><strong><span class="negative">$(10,166.67)</span></strong></td>
-</tr>
-</tbody>
-</table>
-
-<p>--------------------------------------------------------------------------------</p>
-
-<h3>Contract CON-2024-004</h3>
-<p><strong>Measurement Model:</strong> <code>BBA</code></p>
-
-<h4>Balance Sheet Components</h4>
-
-<table>
-<thead><tr>
-<th>Component</th>
-<th>Amount</th>
-</tr></thead>
-<tbody>
-<tr>
-<td>Fulfilment Cash Flows</td>
+<td>CON-2024-004</td>
+<td>BBA</td>
 <td>$670,539.47</td>
-</tr>
-<tr>
-<td>Risk Adjustment</td>
 <td>$0.00</td>
-</tr>
-<tr>
-<td>CSM</td>
 <td>$0.00</td>
-</tr>
-<tr>
-<td><strong>Insurance Contract Liability</strong></td>
 <td><strong>$670,539.47</strong></td>
 </tr>
-</tbody>
-</table>
-
-<h4>CSM Movement Analysis</h4>
-
-<table>
-<thead><tr>
-<th>Movement</th>
-<th>Amount</th>
-</tr></thead>
-<tbody>
 <tr>
-<td>Opening Balance</td>
-<td>$0.00</td>
-</tr>
-<tr>
-<td>Interest Accretion</td>
-<td>$0.00</td>
-</tr>
-<tr>
-<td>Changes in Estimates</td>
-<td>$0.00</td>
-</tr>
-<tr>
-<td>Release for Service</td>
-<td>$-0.00</td>
-</tr>
-<tr>
-<td><strong>Closing Balance</strong></td>
-<td><strong>$0.00</strong></td>
-</tr>
-</tbody>
-</table>
-
-<h4>P&L Impact</h4>
-
-<table>
-<thead><tr>
-<th>Item</th>
-<th>Amount</th>
-</tr></thead>
-<tbody>
-<tr>
-<td>Insurance Revenue</td>
-<td>$8,500.00</td>
-</tr>
-<tr>
-<td>Insurance Service Expense</td>
-<td><span class="negative">$(20,714.29)</span></td>
-</tr>
-<tr>
-<td><strong>⚠️ Net Insurance Result</strong></td>
-<td><strong><span class="negative">$(12,214.29)</span></strong></td>
-</tr>
-</tbody>
-</table>
-
-<p>--------------------------------------------------------------------------------</p>
-
-<h3>Contract CON-2024-005</h3>
-<p><strong>Measurement Model:</strong> <code>BBA</code></p>
-
-<h4>Balance Sheet Components</h4>
-
-<table>
-<thead><tr>
-<th>Component</th>
-<th>Amount</th>
-</tr></thead>
-<tbody>
-<tr>
-<td>Fulfilment Cash Flows</td>
+<td>CON-2024-005</td>
+<td>BBA</td>
 <td>$1,356,532.68</td>
-</tr>
-<tr>
-<td>Risk Adjustment</td>
 <td>$0.00</td>
-</tr>
-<tr>
-<td>CSM</td>
 <td>$0.00</td>
-</tr>
-<tr>
-<td><strong>Insurance Contract Liability</strong></td>
 <td><strong>$1,356,532.68</strong></td>
 </tr>
 </tbody>
 </table>
 
-<h4>CSM Movement Analysis</h4>
+<h3>Income Statement Summary by Contract</h3>
 
 <table>
 <thead><tr>
-<th>Movement</th>
-<th>Amount</th>
+<th>Contract ID</th>
+<th>Revenue</th>
+<th>Expense</th>
+<th>Net Result</th>
+<th>Status</th>
 </tr></thead>
 <tbody>
 <tr>
-<td>Opening Balance</td>
-<td>$0.00</td>
+<td>CON-2024-001</td>
+<td>$5,000.00</td>
+<td><span class="negative">$(16,000.00)</span></td>
+<td><strong><span class="negative">$(11,000.00)</span></strong></td>
+<td>⚠️</td>
 </tr>
 <tr>
-<td>Interest Accretion</td>
-<td>$0.00</td>
+<td>CON-2024-002</td>
+<td>$12,000.00</td>
+<td><span class="negative">$(20,000.00)</span></td>
+<td><strong><span class="negative">$(8,000.00)</span></strong></td>
+<td>⚠️</td>
 </tr>
 <tr>
-<td>Changes in Estimates</td>
-<td>$0.00</td>
+<td>CON-2024-003</td>
+<td>$2,500.00</td>
+<td><span class="negative">$(12,666.67)</span></td>
+<td><strong><span class="negative">$(10,166.67)</span></strong></td>
+<td>⚠️</td>
 </tr>
 <tr>
-<td>Release for Service</td>
+<td>CON-2024-004</td>
+<td>$8,500.00</td>
+<td><span class="negative">$(20,714.29)</span></td>
+<td><strong><span class="negative">$(12,214.29)</span></strong></td>
+<td>⚠️</td>
+</tr>
+<tr>
+<td>CON-2024-005</td>
+<td>$15,000.00</td>
+<td><span class="negative">$(32,500.00)</span></td>
+<td><strong><span class="negative">$(17,500.00)</span></strong></td>
+<td>⚠️</td>
+</tr>
+</tbody>
+</table>
+
+<h3>CSM Movement Summary by Contract</h3>
+
+<table>
+<thead><tr>
+<th>Contract ID</th>
+<th>Opening</th>
+<th>Interest</th>
+<th>Changes</th>
+<th>Release</th>
+<th>Closing</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>CON-2024-001</td>
+<td>$0.00</td>
+<td>$0.00</td>
+<td>$0.00</td>
 <td>$-0.00</td>
+<td><strong>$0.00</strong></td>
 </tr>
 <tr>
-<td><strong>Closing Balance</strong></td>
+<td>CON-2024-002</td>
+<td>$0.00</td>
+<td>$0.00</td>
+<td>$0.00</td>
+<td>$-0.00</td>
+<td><strong>$0.00</strong></td>
+</tr>
+<tr>
+<td>CON-2024-003</td>
+<td>$0.00</td>
+<td>$0.00</td>
+<td>$0.00</td>
+<td>$-0.00</td>
+<td><strong>$0.00</strong></td>
+</tr>
+<tr>
+<td>CON-2024-004</td>
+<td>$0.00</td>
+<td>$0.00</td>
+<td>$0.00</td>
+<td>$-0.00</td>
+<td><strong>$0.00</strong></td>
+</tr>
+<tr>
+<td>CON-2024-005</td>
+<td>$0.00</td>
+<td>$0.00</td>
+<td>$0.00</td>
+<td>$-0.00</td>
 <td><strong>$0.00</strong></td>
 </tr>
 </tbody>
 </table>
 
-<h4>P&L Impact</h4>
+<h2>Methodology Notes</h2>
 
-<table>
-<thead><tr>
-<th>Item</th>
-<th>Amount</th>
-</tr></thead>
-<tbody>
-<tr>
-<td>Insurance Revenue</td>
-<td>$15,000.00</td>
-</tr>
-<tr>
-<td>Insurance Service Expense</td>
-<td><span class="negative">$(32,500.00)</span></td>
-</tr>
-<tr>
-<td><strong>⚠️ Net Insurance Result</strong></td>
-<td><strong><span class="negative">$(17,500.00)</span></strong></td>
-</tr>
-</tbody>
-</table>
+<p>This report applies the <strong>Building Block Approach (BBA)</strong> under IFRS 17. Coverage units are allocated on a straight-line basis, CSM is released in proportion to coverage units provided, and interest accretion uses contract discount rates.</p>
 
-<p>--------------------------------------------------------------------------------</p>
-
-<hr>
-
-<h2>Methodology</h2>
-
-<p>This report applies the <strong>Building Block Approach (BBA)</strong> under IFRS 17.</p>
-
-<h3>Key Assumptions</h3>
-
-<ul>
-<li>Coverage units are allocated on a straight-line basis over the coverage period</li>
-<li>CSM is released in proportion to coverage units provided</li>
-<li>Interest accretion is calculated using contract discount rates</li>
-<li>Risk adjustment is released over the coverage period</li>
-</ul>
-
-<h3>Components Explained</h3>
+<h3>Component Definitions</h3>
 
 <table>
 <thead><tr>
 <th>Component</th>
-<th>Description</th>
+<th>Definition</th>
 </tr></thead>
 <tbody>
 <tr>
-<td><strong>Fulfilment Cash Flows (FCF)</strong></td>
-<td>Present value of expected cash flows</td>
+<td><strong>FCF</strong></td>
+<td>Fulfilment Cash Flows - Present value of expected cash flows</td>
 </tr>
 <tr>
-<td><strong>Risk Adjustment (RA)</strong></td>
-<td>Compensation required for bearing uncertainty</td>
+<td><strong>Risk Adj.</strong></td>
+<td>Risk Adjustment - Compensation for bearing uncertainty</td>
 </tr>
 <tr>
-<td><strong>Contractual Service Margin (CSM)</strong></td>
-<td>Unearned profit recognized over coverage period</td>
+<td><strong>CSM</strong></td>
+<td>Contractual Service Margin - Unearned profit over coverage period</td>
 </tr>
 </tbody>
 </table>
