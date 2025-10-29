@@ -109,7 +109,9 @@ table {
     margin: 15pt 0 25pt 0;
     font-size: 10pt;
     page-break-inside: avoid;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    border-radius: 8pt;
+    overflow: hidden;
 }
 
 thead {
@@ -159,6 +161,22 @@ tr:has(td strong) td {
 /* Right-align numeric columns */
 td:last-child, th:last-child {
     text-align: right;
+    font-variant-numeric: tabular-nums;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 10.5pt;
+    letter-spacing: 0.3pt;
+}
+
+/* Negative amount styling */
+.negative {
+    color: #dc2626;
+    font-weight: 600;
+}
+
+/* Amount highlighting */
+td:last-child strong, th:last-child strong {
+    font-size: 11pt;
+    font-weight: 700;
 }
 
 /* Lists */
@@ -189,9 +207,16 @@ strong {
 
 /* Key metrics section */
 h3:contains("Key Metrics") + table {
-    background: #eff6ff;
-    border: 2px solid #3b82f6;
-    border-radius: 8pt;
+    background: linear-gradient(to bottom, #eff6ff 0%, #ffffff 100%);
+    border: 3px solid #3b82f6;
+    border-radius: 12pt;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+}
+
+h3:contains("Key Metrics") + table td:last-child {
+    font-size: 11.5pt;
+    font-weight: 700;
+    color: #1e40af;
 }
 
 /* Contract sections */
@@ -278,15 +303,15 @@ body {
 <body>
 <h1>📊 IFRS 17 Actuarial Report</h1>
 
-<h2>🏢 Test Insurance Company</h2>
-<p>📅 <strong>Reporting Date:</strong> October 26, 2025</p>
+<h2>Insurance Company</h2>
+<p><strong>Reporting Date:</strong> October 29, 2025</p>
 
 <hr>
 
-<h2>📈 Executive Summary</h2>
-<p>This report presents the IFRS 17 measurement results for <strong>5 insurance contracts</strong> as of 2025-10-26.</p>
+<h2>Executive Summary</h2>
+<p>This report presents the IFRS 17 measurement results for <strong>5 insurance contracts</strong> as of 2025-10-29.</p>
 
-<h3>🎯 Key Metrics</h3>
+<h3>Key Metrics</h3>
 
 <table>
 <thead><tr>
@@ -295,485 +320,485 @@ body {
 </tr></thead>
 <tbody>
 <tr>
-<td>💰 Total Insurance Contract Liability</td>
+<td>Total Insurance Contract Liability</td>
 <td><strong>$3,670,495.39</strong></td>
 </tr>
 <tr>
-<td>📊 Total Contractual Service Margin (CSM)</td>
+<td>Total Contractual Service Margin (CSM)</td>
 <td><strong>$0.00</strong></td>
 </tr>
 <tr>
-<td>💵 Total Insurance Revenue</td>
+<td>Total Insurance Revenue</td>
 <td><strong>$43,000.00</strong></td>
 </tr>
 <tr>
-<td>💸 Total Insurance Service Expense</td>
+<td>Total Insurance Service Expense</td>
 <td><strong>$101,880.95</strong></td>
 </tr>
 <tr>
 <td>⚠️ Net Insurance Result</td>
-<td><strong>$-58,880.95</strong></td>
+<td><strong><span class="negative">$(58,880.95)</span></strong></td>
 </tr>
 </tbody>
 </table>
 
-<h2>📋 Portfolio Summary</h2>
+<h2>Portfolio Summary</h2>
 
-<h3>🧮 Liability Breakdown</h3>
+<h3>Liability Breakdown</h3>
 
 <table>
 <thead><tr>
 <th>Component</th>
-<th>Amount ($)</th>
+<th>Amount</th>
 </tr></thead>
 <tbody>
 <tr>
-<td>💵 Fulfilment Cash Flows</td>
-<td>3,670,495.39</td>
+<td>Fulfilment Cash Flows</td>
+<td>$3,670,495.39</td>
 </tr>
 <tr>
-<td>⚠️ Risk Adjustment</td>
-<td>0.00</td>
+<td>Risk Adjustment</td>
+<td>$0.00</td>
 </tr>
 <tr>
-<td>📊 Contractual Service Margin</td>
-<td>0.00</td>
+<td>Contractual Service Margin</td>
+<td>$0.00</td>
 </tr>
 <tr>
-<td><strong>💰 Total Liability</strong></td>
-<td><strong>3,670,495.39</strong></td>
+<td><strong>Total Liability</strong></td>
+<td><strong>$3,670,495.39</strong></td>
 </tr>
 </tbody>
 </table>
 
 <hr>
 
-<h2>📑 Contract-Level Details</h2>
+<h2>Contract-Level Details</h2>
 
-<h3>📄 Contract CON-2024-001</h3>
-<p>🔍 <strong>Measurement Model:</strong> <code>BBA</code></p>
+<h3>Contract CON-2024-001</h3>
+<p><strong>Measurement Model:</strong> <code>BBA</code></p>
 
-<h4>📊 Balance Sheet Components</h4>
+<h4>Balance Sheet Components</h4>
 
 <table>
 <thead><tr>
 <th>Component</th>
-<th>Amount ($)</th>
+<th>Amount</th>
 </tr></thead>
 <tbody>
 <tr>
-<td>💵 Fulfilment Cash Flows</td>
-<td>249,358.13</td>
+<td>Fulfilment Cash Flows</td>
+<td>$249,358.13</td>
 </tr>
 <tr>
-<td>⚠️ Risk Adjustment</td>
-<td>0.00</td>
+<td>Risk Adjustment</td>
+<td>$0.00</td>
 </tr>
 <tr>
-<td>📈 CSM</td>
-<td>0.00</td>
+<td>CSM</td>
+<td>$0.00</td>
 </tr>
 <tr>
-<td><strong>💰 Insurance Contract Liability</strong></td>
-<td><strong>249,358.13</strong></td>
+<td><strong>Insurance Contract Liability</strong></td>
+<td><strong>$249,358.13</strong></td>
 </tr>
 </tbody>
 </table>
 
-<h4>🔄 CSM Movement Analysis</h4>
+<h4>CSM Movement Analysis</h4>
 
 <table>
 <thead><tr>
 <th>Movement</th>
-<th>Amount ($)</th>
+<th>Amount</th>
 </tr></thead>
 <tbody>
 <tr>
-<td>🏁 Opening Balance</td>
-<td>0.00</td>
+<td>Opening Balance</td>
+<td>$0.00</td>
 </tr>
 <tr>
-<td>➕ Interest Accretion</td>
-<td>0.00</td>
+<td>Interest Accretion</td>
+<td>$0.00</td>
 </tr>
 <tr>
-<td>🔧 Changes in Estimates</td>
-<td>0.00</td>
+<td>Changes in Estimates</td>
+<td>$0.00</td>
 </tr>
 <tr>
-<td>➖ Release for Service</td>
-<td>(0.00)</td>
+<td>Release for Service</td>
+<td>$-0.00</td>
 </tr>
 <tr>
-<td><strong>🎯 Closing Balance</strong></td>
-<td><strong>0.00</strong></td>
+<td><strong>Closing Balance</strong></td>
+<td><strong>$0.00</strong></td>
 </tr>
 </tbody>
 </table>
 
-<h4>💼 P&L Impact</h4>
+<h4>P&L Impact</h4>
 
 <table>
 <thead><tr>
 <th>Item</th>
-<th>Amount ($)</th>
+<th>Amount</th>
 </tr></thead>
 <tbody>
 <tr>
-<td>💵 Insurance Revenue</td>
-<td>5,000.00</td>
+<td>Insurance Revenue</td>
+<td>$5,000.00</td>
 </tr>
 <tr>
-<td>💸 Insurance Service Expense</td>
-<td>(16,000.00)</td>
+<td>Insurance Service Expense</td>
+<td><span class="negative">$(16,000.00)</span></td>
 </tr>
 <tr>
 <td><strong>⚠️ Net Insurance Result</strong></td>
-<td><strong>-11,000.00</strong></td>
+<td><strong><span class="negative">$(11,000.00)</span></strong></td>
 </tr>
 </tbody>
 </table>
 
 <p>--------------------------------------------------------------------------------</p>
 
-<h3>📄 Contract CON-2024-002</h3>
-<p>🔍 <strong>Measurement Model:</strong> <code>BBA</code></p>
+<h3>Contract CON-2024-002</h3>
+<p><strong>Measurement Model:</strong> <code>BBA</code></p>
 
-<h4>📊 Balance Sheet Components</h4>
+<h4>Balance Sheet Components</h4>
 
 <table>
 <thead><tr>
 <th>Component</th>
-<th>Amount ($)</th>
+<th>Amount</th>
 </tr></thead>
 <tbody>
 <tr>
-<td>💵 Fulfilment Cash Flows</td>
-<td>1,340,043.64</td>
+<td>Fulfilment Cash Flows</td>
+<td>$1,340,043.64</td>
 </tr>
 <tr>
-<td>⚠️ Risk Adjustment</td>
-<td>0.00</td>
+<td>Risk Adjustment</td>
+<td>$0.00</td>
 </tr>
 <tr>
-<td>📈 CSM</td>
-<td>0.00</td>
+<td>CSM</td>
+<td>$0.00</td>
 </tr>
 <tr>
-<td><strong>💰 Insurance Contract Liability</strong></td>
-<td><strong>1,340,043.64</strong></td>
+<td><strong>Insurance Contract Liability</strong></td>
+<td><strong>$1,340,043.64</strong></td>
 </tr>
 </tbody>
 </table>
 
-<h4>🔄 CSM Movement Analysis</h4>
+<h4>CSM Movement Analysis</h4>
 
 <table>
 <thead><tr>
 <th>Movement</th>
-<th>Amount ($)</th>
+<th>Amount</th>
 </tr></thead>
 <tbody>
 <tr>
-<td>🏁 Opening Balance</td>
-<td>0.00</td>
+<td>Opening Balance</td>
+<td>$0.00</td>
 </tr>
 <tr>
-<td>➕ Interest Accretion</td>
-<td>0.00</td>
+<td>Interest Accretion</td>
+<td>$0.00</td>
 </tr>
 <tr>
-<td>🔧 Changes in Estimates</td>
-<td>0.00</td>
+<td>Changes in Estimates</td>
+<td>$0.00</td>
 </tr>
 <tr>
-<td>➖ Release for Service</td>
-<td>(0.00)</td>
+<td>Release for Service</td>
+<td>$-0.00</td>
 </tr>
 <tr>
-<td><strong>🎯 Closing Balance</strong></td>
-<td><strong>0.00</strong></td>
+<td><strong>Closing Balance</strong></td>
+<td><strong>$0.00</strong></td>
 </tr>
 </tbody>
 </table>
 
-<h4>💼 P&L Impact</h4>
+<h4>P&L Impact</h4>
 
 <table>
 <thead><tr>
 <th>Item</th>
-<th>Amount ($)</th>
+<th>Amount</th>
 </tr></thead>
 <tbody>
 <tr>
-<td>💵 Insurance Revenue</td>
-<td>12,000.00</td>
+<td>Insurance Revenue</td>
+<td>$12,000.00</td>
 </tr>
 <tr>
-<td>💸 Insurance Service Expense</td>
-<td>(20,000.00)</td>
+<td>Insurance Service Expense</td>
+<td><span class="negative">$(20,000.00)</span></td>
 </tr>
 <tr>
 <td><strong>⚠️ Net Insurance Result</strong></td>
-<td><strong>-8,000.00</strong></td>
+<td><strong><span class="negative">$(8,000.00)</span></strong></td>
 </tr>
 </tbody>
 </table>
 
 <p>--------------------------------------------------------------------------------</p>
 
-<h3>📄 Contract CON-2024-003</h3>
-<p>🔍 <strong>Measurement Model:</strong> <code>BBA</code></p>
+<h3>Contract CON-2024-003</h3>
+<p><strong>Measurement Model:</strong> <code>BBA</code></p>
 
-<h4>📊 Balance Sheet Components</h4>
+<h4>Balance Sheet Components</h4>
 
 <table>
 <thead><tr>
 <th>Component</th>
-<th>Amount ($)</th>
+<th>Amount</th>
 </tr></thead>
 <tbody>
 <tr>
-<td>💵 Fulfilment Cash Flows</td>
-<td>54,021.47</td>
+<td>Fulfilment Cash Flows</td>
+<td>$54,021.47</td>
 </tr>
 <tr>
-<td>⚠️ Risk Adjustment</td>
-<td>0.00</td>
+<td>Risk Adjustment</td>
+<td>$0.00</td>
 </tr>
 <tr>
-<td>📈 CSM</td>
-<td>0.00</td>
+<td>CSM</td>
+<td>$0.00</td>
 </tr>
 <tr>
-<td><strong>💰 Insurance Contract Liability</strong></td>
-<td><strong>54,021.47</strong></td>
+<td><strong>Insurance Contract Liability</strong></td>
+<td><strong>$54,021.47</strong></td>
 </tr>
 </tbody>
 </table>
 
-<h4>🔄 CSM Movement Analysis</h4>
+<h4>CSM Movement Analysis</h4>
 
 <table>
 <thead><tr>
 <th>Movement</th>
-<th>Amount ($)</th>
+<th>Amount</th>
 </tr></thead>
 <tbody>
 <tr>
-<td>🏁 Opening Balance</td>
-<td>0.00</td>
+<td>Opening Balance</td>
+<td>$0.00</td>
 </tr>
 <tr>
-<td>➕ Interest Accretion</td>
-<td>0.00</td>
+<td>Interest Accretion</td>
+<td>$0.00</td>
 </tr>
 <tr>
-<td>🔧 Changes in Estimates</td>
-<td>0.00</td>
+<td>Changes in Estimates</td>
+<td>$0.00</td>
 </tr>
 <tr>
-<td>➖ Release for Service</td>
-<td>(0.00)</td>
+<td>Release for Service</td>
+<td>$-0.00</td>
 </tr>
 <tr>
-<td><strong>🎯 Closing Balance</strong></td>
-<td><strong>0.00</strong></td>
+<td><strong>Closing Balance</strong></td>
+<td><strong>$0.00</strong></td>
 </tr>
 </tbody>
 </table>
 
-<h4>💼 P&L Impact</h4>
+<h4>P&L Impact</h4>
 
 <table>
 <thead><tr>
 <th>Item</th>
-<th>Amount ($)</th>
+<th>Amount</th>
 </tr></thead>
 <tbody>
 <tr>
-<td>💵 Insurance Revenue</td>
-<td>2,500.00</td>
+<td>Insurance Revenue</td>
+<td>$2,500.00</td>
 </tr>
 <tr>
-<td>💸 Insurance Service Expense</td>
-<td>(12,666.67)</td>
+<td>Insurance Service Expense</td>
+<td><span class="negative">$(12,666.67)</span></td>
 </tr>
 <tr>
 <td><strong>⚠️ Net Insurance Result</strong></td>
-<td><strong>-10,166.67</strong></td>
+<td><strong><span class="negative">$(10,166.67)</span></strong></td>
 </tr>
 </tbody>
 </table>
 
 <p>--------------------------------------------------------------------------------</p>
 
-<h3>📄 Contract CON-2024-004</h3>
-<p>🔍 <strong>Measurement Model:</strong> <code>BBA</code></p>
+<h3>Contract CON-2024-004</h3>
+<p><strong>Measurement Model:</strong> <code>BBA</code></p>
 
-<h4>📊 Balance Sheet Components</h4>
+<h4>Balance Sheet Components</h4>
 
 <table>
 <thead><tr>
 <th>Component</th>
-<th>Amount ($)</th>
+<th>Amount</th>
 </tr></thead>
 <tbody>
 <tr>
-<td>💵 Fulfilment Cash Flows</td>
-<td>670,539.47</td>
+<td>Fulfilment Cash Flows</td>
+<td>$670,539.47</td>
 </tr>
 <tr>
-<td>⚠️ Risk Adjustment</td>
-<td>0.00</td>
+<td>Risk Adjustment</td>
+<td>$0.00</td>
 </tr>
 <tr>
-<td>📈 CSM</td>
-<td>0.00</td>
+<td>CSM</td>
+<td>$0.00</td>
 </tr>
 <tr>
-<td><strong>💰 Insurance Contract Liability</strong></td>
-<td><strong>670,539.47</strong></td>
+<td><strong>Insurance Contract Liability</strong></td>
+<td><strong>$670,539.47</strong></td>
 </tr>
 </tbody>
 </table>
 
-<h4>🔄 CSM Movement Analysis</h4>
+<h4>CSM Movement Analysis</h4>
 
 <table>
 <thead><tr>
 <th>Movement</th>
-<th>Amount ($)</th>
+<th>Amount</th>
 </tr></thead>
 <tbody>
 <tr>
-<td>🏁 Opening Balance</td>
-<td>0.00</td>
+<td>Opening Balance</td>
+<td>$0.00</td>
 </tr>
 <tr>
-<td>➕ Interest Accretion</td>
-<td>0.00</td>
+<td>Interest Accretion</td>
+<td>$0.00</td>
 </tr>
 <tr>
-<td>🔧 Changes in Estimates</td>
-<td>0.00</td>
+<td>Changes in Estimates</td>
+<td>$0.00</td>
 </tr>
 <tr>
-<td>➖ Release for Service</td>
-<td>(0.00)</td>
+<td>Release for Service</td>
+<td>$-0.00</td>
 </tr>
 <tr>
-<td><strong>🎯 Closing Balance</strong></td>
-<td><strong>0.00</strong></td>
+<td><strong>Closing Balance</strong></td>
+<td><strong>$0.00</strong></td>
 </tr>
 </tbody>
 </table>
 
-<h4>💼 P&L Impact</h4>
+<h4>P&L Impact</h4>
 
 <table>
 <thead><tr>
 <th>Item</th>
-<th>Amount ($)</th>
+<th>Amount</th>
 </tr></thead>
 <tbody>
 <tr>
-<td>💵 Insurance Revenue</td>
-<td>8,500.00</td>
+<td>Insurance Revenue</td>
+<td>$8,500.00</td>
 </tr>
 <tr>
-<td>💸 Insurance Service Expense</td>
-<td>(20,714.29)</td>
+<td>Insurance Service Expense</td>
+<td><span class="negative">$(20,714.29)</span></td>
 </tr>
 <tr>
 <td><strong>⚠️ Net Insurance Result</strong></td>
-<td><strong>-12,214.29</strong></td>
+<td><strong><span class="negative">$(12,214.29)</span></strong></td>
 </tr>
 </tbody>
 </table>
 
 <p>--------------------------------------------------------------------------------</p>
 
-<h3>📄 Contract CON-2024-005</h3>
-<p>🔍 <strong>Measurement Model:</strong> <code>BBA</code></p>
+<h3>Contract CON-2024-005</h3>
+<p><strong>Measurement Model:</strong> <code>BBA</code></p>
 
-<h4>📊 Balance Sheet Components</h4>
+<h4>Balance Sheet Components</h4>
 
 <table>
 <thead><tr>
 <th>Component</th>
-<th>Amount ($)</th>
+<th>Amount</th>
 </tr></thead>
 <tbody>
 <tr>
-<td>💵 Fulfilment Cash Flows</td>
-<td>1,356,532.68</td>
+<td>Fulfilment Cash Flows</td>
+<td>$1,356,532.68</td>
 </tr>
 <tr>
-<td>⚠️ Risk Adjustment</td>
-<td>0.00</td>
+<td>Risk Adjustment</td>
+<td>$0.00</td>
 </tr>
 <tr>
-<td>📈 CSM</td>
-<td>0.00</td>
+<td>CSM</td>
+<td>$0.00</td>
 </tr>
 <tr>
-<td><strong>💰 Insurance Contract Liability</strong></td>
-<td><strong>1,356,532.68</strong></td>
+<td><strong>Insurance Contract Liability</strong></td>
+<td><strong>$1,356,532.68</strong></td>
 </tr>
 </tbody>
 </table>
 
-<h4>🔄 CSM Movement Analysis</h4>
+<h4>CSM Movement Analysis</h4>
 
 <table>
 <thead><tr>
 <th>Movement</th>
-<th>Amount ($)</th>
+<th>Amount</th>
 </tr></thead>
 <tbody>
 <tr>
-<td>🏁 Opening Balance</td>
-<td>0.00</td>
+<td>Opening Balance</td>
+<td>$0.00</td>
 </tr>
 <tr>
-<td>➕ Interest Accretion</td>
-<td>0.00</td>
+<td>Interest Accretion</td>
+<td>$0.00</td>
 </tr>
 <tr>
-<td>🔧 Changes in Estimates</td>
-<td>0.00</td>
+<td>Changes in Estimates</td>
+<td>$0.00</td>
 </tr>
 <tr>
-<td>➖ Release for Service</td>
-<td>(0.00)</td>
+<td>Release for Service</td>
+<td>$-0.00</td>
 </tr>
 <tr>
-<td><strong>🎯 Closing Balance</strong></td>
-<td><strong>0.00</strong></td>
+<td><strong>Closing Balance</strong></td>
+<td><strong>$0.00</strong></td>
 </tr>
 </tbody>
 </table>
 
-<h4>💼 P&L Impact</h4>
+<h4>P&L Impact</h4>
 
 <table>
 <thead><tr>
 <th>Item</th>
-<th>Amount ($)</th>
+<th>Amount</th>
 </tr></thead>
 <tbody>
 <tr>
-<td>💵 Insurance Revenue</td>
-<td>15,000.00</td>
+<td>Insurance Revenue</td>
+<td>$15,000.00</td>
 </tr>
 <tr>
-<td>💸 Insurance Service Expense</td>
-<td>(32,500.00)</td>
+<td>Insurance Service Expense</td>
+<td><span class="negative">$(32,500.00)</span></td>
 </tr>
 <tr>
 <td><strong>⚠️ Net Insurance Result</strong></td>
-<td><strong>-17,500.00</strong></td>
+<td><strong><span class="negative">$(17,500.00)</span></strong></td>
 </tr>
 </tbody>
 </table>
@@ -782,20 +807,20 @@ body {
 
 <hr>
 
-<h2>📚 Methodology</h2>
+<h2>Methodology</h2>
 
 <p>This report applies the <strong>Building Block Approach (BBA)</strong> under IFRS 17.</p>
 
-<h3>🎯 Key Assumptions</h3>
+<h3>Key Assumptions</h3>
 
 <ul>
-<li>📊 Coverage units are allocated on a straight-line basis over the coverage period</li>
-<li>📈 CSM is released in proportion to coverage units provided</li>
-<li>💰 Interest accretion is calculated using contract discount rates</li>
-<li>⚠️ Risk adjustment is released over the coverage period</li>
+<li>Coverage units are allocated on a straight-line basis over the coverage period</li>
+<li>CSM is released in proportion to coverage units provided</li>
+<li>Interest accretion is calculated using contract discount rates</li>
+<li>Risk adjustment is released over the coverage period</li>
 </ul>
 
-<h3>🧩 Components Explained</h3>
+<h3>Components Explained</h3>
 
 <table>
 <thead><tr>
@@ -804,15 +829,15 @@ body {
 </tr></thead>
 <tbody>
 <tr>
-<td>💵 <strong>Fulfilment Cash Flows (FCF)</strong></td>
+<td><strong>Fulfilment Cash Flows (FCF)</strong></td>
 <td>Present value of expected cash flows</td>
 </tr>
 <tr>
-<td>⚠️ <strong>Risk Adjustment (RA)</strong></td>
+<td><strong>Risk Adjustment (RA)</strong></td>
 <td>Compensation required for bearing uncertainty</td>
 </tr>
 <tr>
-<td>📊 <strong>Contractual Service Margin (CSM)</strong></td>
+<td><strong>Contractual Service Margin (CSM)</strong></td>
 <td>Unearned profit recognized over coverage period</td>
 </tr>
 </tbody>
@@ -820,11 +845,11 @@ body {
 
 <hr>
 
-<p>📅 <em>Report generated automatically on October 26, 2025</em></p>
+<p><em>Report generated automatically on October 29, 2025</em></p>
 
-<p>🤖 <em>This report is generated using the IFRS 17 automated reporting system</em></p>
+<p><em>This report is generated using the IFRS 17 automated reporting system</em></p>
 
-<p>✨ <em>For more information, please contact your actuarial team</em></p>
+<p><em>For more information, please contact your actuarial team</em></p>
 
 </body>
 </html>

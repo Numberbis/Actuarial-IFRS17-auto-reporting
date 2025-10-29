@@ -61,7 +61,7 @@ def test_report_generation(sample_result):
             content = f.read()
 
         # Check for key sections
-        assert "# IFRS 17 Actuarial Report" in content
+        assert "IFRS 17 Actuarial Report" in content
         assert "Test Insurance Co" in content
         assert "Executive Summary" in content
         assert "Contract-Level Details" in content
