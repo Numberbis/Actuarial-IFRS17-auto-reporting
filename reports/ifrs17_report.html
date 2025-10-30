@@ -135,7 +135,7 @@ thead {
 }
 
 th {
-    padding: 5pt 6pt;
+    padding: 6pt 8pt;
     text-align: left;
     font-weight: 600;
     border-bottom: 1px solid #2c3e50;
@@ -143,19 +143,19 @@ th {
 }
 
 td {
-    padding: 4pt 6pt;
+    padding: 5pt 8pt;
     border-bottom: 1px solid #e2e8f0;
 }
 
 /* Compact wide tables */
 table:has(th:nth-child(5)) th,
 table:has(th:nth-child(5)) td {
-    padding: 4pt 5pt;
+    padding: 5pt 6pt;
 }
 
 table:has(th:nth-child(6)) th,
 table:has(th:nth-child(6)) td {
-    padding: 3pt 4pt;
+    padding: 4pt 5pt;
 }
 
 /* Alternating row colors */
@@ -179,18 +179,31 @@ tr:has(td strong) {
 }
 
 tr:has(td strong) td {
-    padding: 6pt 8pt;
+    padding: 7pt 10pt;
     font-weight: 600;
     color: #2c3e50;
 }
 
 /* Right-align numeric columns */
-td:last-child, th:last-child {
+td:last-child, th:last-child,
+td:nth-child(n+2), th:nth-child(n+2) {
     text-align: right;
     font-variant-numeric: tabular-nums;
     font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
     font-size: 8.5pt;
     letter-spacing: 0.2pt;
+}
+
+/* Keep first column (labels/IDs) left-aligned */
+td:first-child, th:first-child {
+    text-align: left;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Keep Model column left-aligned */
+td:nth-child(2):not(:last-child), th:nth-child(2):not(:last-child) {
+    text-align: left;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* Negative amount styling */
@@ -329,12 +342,12 @@ body {
 <h1>📊 IFRS 17 Actuarial Report</h1>
 
 <h2>Insurance Company</h2>
-<p><strong>Reporting Date:</strong> October 29, 2025</p>
+<p><strong>Reporting Date:</strong> October 30, 2025</p>
 
 <hr>
 
 <h2>Executive Summary</h2>
-<p>This report presents the IFRS 17 measurement results for <strong>5 insurance contracts</strong> as of 2025-10-29.</p>
+<p>This report presents the IFRS 17 measurement results for <strong>5 insurance contracts</strong> as of 2025-10-30.</p>
 
 <h3>Key Metrics</h3>
 
@@ -519,7 +532,7 @@ body {
 <td>$0.00</td>
 <td>$0.00</td>
 <td>$0.00</td>
-<td>$-0.00</td>
+<td>$0.00</td>
 <td><strong>$0.00</strong></td>
 </tr>
 <tr>
@@ -527,7 +540,7 @@ body {
 <td>$0.00</td>
 <td>$0.00</td>
 <td>$0.00</td>
-<td>$-0.00</td>
+<td>$0.00</td>
 <td><strong>$0.00</strong></td>
 </tr>
 <tr>
@@ -535,7 +548,7 @@ body {
 <td>$0.00</td>
 <td>$0.00</td>
 <td>$0.00</td>
-<td>$-0.00</td>
+<td>$0.00</td>
 <td><strong>$0.00</strong></td>
 </tr>
 <tr>
@@ -543,7 +556,7 @@ body {
 <td>$0.00</td>
 <td>$0.00</td>
 <td>$0.00</td>
-<td>$-0.00</td>
+<td>$0.00</td>
 <td><strong>$0.00</strong></td>
 </tr>
 <tr>
@@ -551,7 +564,7 @@ body {
 <td>$0.00</td>
 <td>$0.00</td>
 <td>$0.00</td>
-<td>$-0.00</td>
+<td>$0.00</td>
 <td><strong>$0.00</strong></td>
 </tr>
 </tbody>
@@ -586,7 +599,7 @@ body {
 
 <hr>
 
-<p><em>Report generated automatically on October 29, 2025</em></p>
+<p><em>Report generated automatically on October 30, 2025</em></p>
 
 <p><em>This report is generated using the IFRS 17 automated reporting system</em></p>
 

@@ -16,6 +16,9 @@ class MarkdownReportGenerator:
     def _format_amount(amount: float, show_currency: bool = True) -> str:
         """Format amount with improved readability"""
         prefix = "$" if show_currency else ""
+        # Handle negative zero edge case
+        if abs(amount) < 0.01:  # Treat values very close to zero as zero
+            amount = 0.0
         if amount < 0:
             return f'<span class="negative">{prefix}({abs(amount):,.2f})</span>'
         return f"{prefix}{amount:,.2f}"
